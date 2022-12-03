@@ -1,6 +1,6 @@
 package Usuarios;
 
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public abstract class PersonaVirtual { //Clase padre - superClase
