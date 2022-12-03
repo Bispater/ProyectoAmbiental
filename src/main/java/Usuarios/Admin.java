@@ -60,12 +60,14 @@ public class Admin extends PersonaVirtual {
                 //PASAR DATOS DESDE EL CSV AL ARRAYLIST
                 updateArrayListfromCSV(str);
             }
-            System.out.println("IMPRIMIR ARRAYLIST DE DATOS DESDE ARRAYLIST CREADO");
+            lector.close();
+            /*
+            System.out.println("MOSTRAR DATOS DEL ARRAYLIST CREADO");
             for(int i=0;i<administradores.size();i++){
                 System.out.println("DATO N" + i + " " + administradores.get(i).getId());
                 System.out.println("DATO N" + i + " " + administradores.get(i).getContrasenia());
-            }
-            lector.close();
+            }¨*/
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -115,6 +117,17 @@ public class Admin extends PersonaVirtual {
         try {
             CSVFile admin = new CSVFile();
             admin.escribirAdminCSV("src/main/resources/administrador/CSVadmin.csv", data);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean crearPuntoReciclaje(String[] data) {
+        try {
+            CSVFile admin = new CSVFile();
+            admin.escribirPuntoReciclajeCSV("src/main/resources/puntos/CSVpuntos.csv", data);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             return false;

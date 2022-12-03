@@ -242,22 +242,40 @@ public class VentanaAdmin extends javax.swing.JFrame {
         //Condicion con funcion boleana para saber si se encuentran los registros ingresados
 
         Admin administrador = new Admin();
-        String[] data = new String[2];
+        String[] data = new String[3];
         data[0] = FieldID.getText();
         data[1] = FieldPass.getText();
-        if(administrador.ValidarAdministrador(data)){
-            //--> abrir ventana de funcionalidades del administrador JFrame
-            AdminFuncion ventanaAdmin = new AdminFuncion();
-            ventanaAdmin.setVisible(true);
-            this.setVisible(false);
-        }else{
-            // --> Mostrar un showDialog de que hay datos ingresado incorrectos
-            JOptionPane.showMessageDialog(null, "Uno o más datos son incorrectos");
+        if (ValidarCampos()){
+            if(administrador.ValidarAdministrador(data)){
+                //--> abrir ventana de funcionalidades del administrador JFrame
+                AdminFuncion ventanaAdmin = new AdminFuncion();
+                ventanaAdmin.setVisible(true);
+                this.setVisible(false);
+            }
         }
-
 
     }//GEN-LAST:event_IngresarButtonActionPerformed
 
+    private boolean ValidarCampos() {
+        //MODIFICAR RETROALIMENTACIÓN !!!!
+        // ALERTAR CUANDO ESTÉN VACÍOS
+        String Nombre = FieldName.getText();
+        if(!Nombre.matches("([a-zA-Z]*[ ']+[a-zA-Z]*)*+")){
+            JOptionPane.showMessageDialog(null,"El nombre ingresado es incorrecto");
+            return false;
+        }
+        String ID = FieldID.getText();
+        if(!ID.matches("[0-9]*+")){
+            JOptionPane.showMessageDialog(null,"El campo ID debe ser numérico.");
+            return false;
+        }
+        String pass = FieldPass.getText();
+        if(!pass.matches( "([a-zA-Z]*+[0-9]*)+")){
+            JOptionPane.showMessageDialog(null,"El campo contraseña está incorrecto");
+            return false;
+        }
+        return true;
+    }
     private void FieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldNameActionPerformed
