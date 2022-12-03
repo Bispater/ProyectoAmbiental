@@ -50,18 +50,17 @@ public class Admin extends PersonaVirtual {
     }
 
 
-    public boolean ValidarAdministrador(String[] datos){
+    public boolean ValidarAdministrador(String Id, String Password) {
         BufferedReader lector;
         String linea;
         try {
             lector = new BufferedReader(new FileReader("src/main/resources/administrador/CSVadmin.csv"));
             while ((linea = lector.readLine()) != null) {
                 String str = linea;
-                //PASAR DATOS DESDE EL CSV AL ARRAYLIST
-                updateArrayListfromCSV(str);
+                updateArrayListfromCSV(str); //PASAR DATOS DESDE EL CSV AL ARRAYLIST DE ADMINSITRADORES
             }
-            System.out.println("IMPRIMIR ARRAYLIST DE DATOS DESDE ARRAYLIST CREADO");
-            for(int i=0;i<administradores.size();i++){
+            System.out.println("IMPRIMIR ARRAYLIST DE DATOS DESDE ARRAYLIST CREADO"); //Print y for despues de eliminan
+            for (int i = 0; i < administradores.size(); i++) {
                 System.out.println("DATO N" + i + " " + administradores.get(i).getId());
                 System.out.println("DATO N" + i + " " + administradores.get(i).getContrasenia());
             }
@@ -69,13 +68,22 @@ public class Admin extends PersonaVirtual {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        //Prueba
+        for(int i=0; i<administradores.size();i++){
+            if(administradores.get(i).getId().equals(Id) && administradores.get(i).getContrasenia().equals(Password)){
+                return true;
+            }
+        }
+        //JOptionPane.showMessageDialog(null, "No se encontró el administrador buscado.");
+        return false;
+        /*
         if(validarIdAdmin(datos[0]) && validarContraseniaAdmin(datos[1])){
             System.out.println("¡INGRESO EXITOSO!");
             return true;
         }else{
             JOptionPane.showMessageDialog(null, "No se encontró el administrador buscado.");
         }
-        return false;
+        return false;*/
     }
 
     public void updateArrayListfromCSV (String linea){
@@ -87,6 +95,7 @@ public class Admin extends PersonaVirtual {
         Admin nuevoAdmin = new Admin(nombreAdmin, runAdmin, idAdmin, contraseniaAdmin);
         administradores.add(nuevoAdmin);
     }
+    /*
     public boolean validarIdAdmin(String id){
         System.out.println("DATO DESDE FIELD ID: " + id);
         for (int i=0; i<administradores.size();i++){
@@ -108,7 +117,7 @@ public class Admin extends PersonaVirtual {
         }
         return false;
     }
-
+*/
 
     //EL MÉTODO CREAR ADMIN INGRESA LOS DATOS EN EL CSV DE ADMINS.
     public boolean crearAdmin(String[] data) {
