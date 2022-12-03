@@ -240,22 +240,19 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
     private void IngresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarButtonActionPerformed
         //Condicion con funcion boleana para saber si se encuentran los registros ingresados
-
         Admin administrador = new Admin();
         String[] data = new String[2];
         data[0] = FieldID.getText();
         data[1] = FieldPass.getText();
-        if(administrador.ValidarAdministrador(data)){
+
+        if(administrador.ValidarAdministrador(FieldID.getText(),FieldPass.getText())){
             //--> abrir ventana de funcionalidades del administrador JFrame
             AdminFuncion ventanaAdmin = new AdminFuncion();
             ventanaAdmin.setVisible(true);
             this.setVisible(false);
         }else{
-            // --> Mostrar un showDialog de que hay datos ingresado incorrectos
             JOptionPane.showMessageDialog(null, "Uno o más datos son incorrectos");
         }
-
-
     }//GEN-LAST:event_IngresarButtonActionPerformed
 
     private void FieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldNameActionPerformed

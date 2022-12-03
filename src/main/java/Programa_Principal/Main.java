@@ -19,14 +19,6 @@ public class Main {
         // LECTURA ARCHIVO
         CSVFile archivo = new CSVFile();
         archivo.leerArchivo("src/main/resources/CSVTEST.csv");
-        //ESCRIBIR EN ARCHIVO CSV
-        /*
-        CSVManage ob = new CSVManage();
-        String[] header = { "Nombre", "Apellido"};
-        ob.writeCSV("src/main/resources/CSVTEST.csv", header);
-        */
-
-
         entrada = new Scanner(System.in);
 
         do{
