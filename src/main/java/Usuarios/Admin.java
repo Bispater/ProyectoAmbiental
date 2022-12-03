@@ -17,18 +17,21 @@ public class Admin extends PersonaVirtual {
     Scanner entrada = new Scanner(System.in);
     private String id ;
     ArrayList <Admin> administradores = new ArrayList<>();
+    ArrayList<Usuario>usuariosRegistrados = new ArrayList<>();
 
 
 
     // Constructores
     public Admin() {
-        super("admin","00000000-0");
+        this.setNombre("admin");
+        this.setRut("00000000-0");
         this.id="";
         this.Contrasenia = "admin";
 
     }
     public Admin(String nombre , String run, String id , String contrasenia) {
-        super(nombre,run); //Solicitar rut al admin
+        this.setNombre(nombre);
+        this.setRut(run);
         this.id=id;
         this.Contrasenia = contrasenia;
     }
@@ -95,7 +98,7 @@ public class Admin extends PersonaVirtual {
         Admin nuevoAdmin = new Admin(nombreAdmin, runAdmin, idAdmin, contraseniaAdmin);
         administradores.add(nuevoAdmin);
     }
-    /*
+
     public boolean validarIdAdmin(String id){
         System.out.println("DATO DESDE FIELD ID: " + id);
         for (int i=0; i<administradores.size();i++){
@@ -117,7 +120,6 @@ public class Admin extends PersonaVirtual {
         }
         return false;
     }
-*/
 
     //EL MÉTODO CREAR ADMIN INGRESA LOS DATOS EN EL CSV DE ADMINS.
     public boolean crearAdmin(String[] data) {
@@ -131,5 +133,36 @@ public class Admin extends PersonaVirtual {
         return true;
     }
 
+    public void PersonasMasptosDereciclaje( )
+    {
+    int maxPtosDereciclaje = contarPTosdereciclaje();
+    for(int i=0 ; i<usuariosRegistrados.size() ; i++)
+    {
+      if(usuariosRegistrados.get(i).ptosReciclajeDesuCiudad.size() == maxPtosDereciclaje )
+      {
+        System.out.println("El usuario: " + usuariosRegistrados.get(i).getNombre() + "Con rut");
+        System.out.println(usuariosRegistrados.get(i).getRut() );
+        System.out.println("Es una persona con el maximo puntos de reciclaje");
 
+      }
+
+
+    }
+
+
+    }
+    public int contarPTosdereciclaje()
+    {
+      int contadorMax=0;
+      for(int i = 0 ; i < usuariosRegistrados.size() ; i++)
+      {
+          if(usuariosRegistrados.get(i).ptosReciclajeDesuCiudad.size() > contadorMax )
+          {
+              contadorMax=usuariosRegistrados.get(i).ptosReciclajeDesuCiudad.size();
+
+          }
+
+      }
+        return contadorMax;
+    }
 }
