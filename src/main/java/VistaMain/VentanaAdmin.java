@@ -35,9 +35,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
         FieldID = new javax.swing.JTextField();
         FieldPass = new javax.swing.JTextField();
         IngresarButton = new javax.swing.JButton();
-        TextErrorAdmin = new javax.swing.JLabel();
-        TextErrorID = new javax.swing.JLabel();
-        TextErrorPass = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -139,20 +136,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
             }
         });
 
-        TextErrorAdmin.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        TextErrorAdmin.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorAdmin.setText("jLabel1");
-
-        TextErrorID.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        TextErrorID.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorID.setText("jLabel2");
-
-        TextErrorPass.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        TextErrorPass.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorPass.setText("jLabel3");
-        TextErrorPass.setMaximumSize(new java.awt.Dimension(37, 22));
-        TextErrorPass.setPreferredSize(new java.awt.Dimension(37, 22));
-
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
         Fondo.setLayout(FondoLayout);
         FondoLayout.setHorizontalGroup(
@@ -172,12 +155,12 @@ public class VentanaAdmin extends javax.swing.JFrame {
                                 .addComponent(FieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(FondoLayout.createSequentialGroup()
                                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TextErrorPass, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                                     .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(TextID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(TextAdminName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(TextErrorAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(TextErrorID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+
+                                       ))
                                 .addGap(18, 18, 18)
                                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(FieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,19 +183,19 @@ public class VentanaAdmin extends javax.swing.JFrame {
                     .addComponent(TextAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextErrorAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextErrorID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextErrorPass, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addGap(39, 39, 39)
                 .addComponent(IngresarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(103, Short.MAX_VALUE))
@@ -300,9 +283,6 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel Fondo;
     private javax.swing.JButton IngresarButton;
     private javax.swing.JLabel TextAdminName;
-    private javax.swing.JLabel TextErrorAdmin;
-    private javax.swing.JLabel TextErrorID;
-    private javax.swing.JLabel TextErrorPass;
     private javax.swing.JLabel TextID;
     private javax.swing.JLabel TextPass;
     private javax.swing.JLabel TituloPrincipal;

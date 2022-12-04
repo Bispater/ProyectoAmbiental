@@ -189,19 +189,19 @@ public class AgregarPR extends javax.swing.JPanel {
         PanelAgregarPR.add(AgregarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
 
         LabelErrorID.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorID.setText("jLabel1");
+        //LabelErrorID.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 170, 20));
 
         LabelErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorDireccion.setText("jLabel1");
+        //LabelErrorDireccion.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 86, 170, 20));
 
         LabelErrorTR.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorTR.setText("jLabel1");
+        //LabelErrorTR.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorTR, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 170, 20));
 
         LabelErrorCiudad.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorCiudad.setText("jLabel1");
+        //LabelErrorCiudad.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 170, 20));
 
         LabelCapacidad2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -253,7 +253,7 @@ public class AgregarPR extends javax.swing.JPanel {
         PanelAgregarPR.add(FieldIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, 30));
 
         LabelErrorCapacidad1.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorCapacidad1.setText("jLabel1");
+        //LabelErrorCapacidad1.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorCapacidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 170, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -317,9 +317,8 @@ public class AgregarPR extends javax.swing.JPanel {
                 JComponent comp = (JComponent) evt.getSource();
                 Window win = SwingUtilities.getWindowAncestor(comp);
                 win.dispose();
-            }
-        }
-
+            };
+        };
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private boolean ValidarCampos() {
@@ -330,33 +329,37 @@ public class AgregarPR extends javax.swing.JPanel {
         String capacidad = FieldCapacidad1.getText();
         String IDpunto = FieldIdentificador.getText();
         String periodoVaciado = FieldVaciado.getText();
-
+        System.out.println("===================== ");
+        System.out.println("tipo direccion : " + direccion);
+        System.out.println("tipo tipoReciclaje : " + tipoReciclaje);
+        System.out.println("tipo ciudad : " + ciudad);
+        System.out.println("===================== ");
         if((direccion.length()==0)||(tipoReciclaje.length()==0)||(ciudad.length()==0)||capacidad.length()==0||
             (IDpunto.length()==0)||(periodoVaciado.length()==0)){
             JOptionPane.showMessageDialog(null,"ERROR: Uno o más campos están vacíos.");
             return false;
         }
-        if(!direccion.matches("([a-zA-Z]*[ ']+[a-zA-Z]*)*+")){
-            JOptionPane.showMessageDialog(null,"El nombre ingresado es incorrecto");
+        if(!direccion.matches("([a-zA-Z]*[ ']+[a-zA-Z]*[ ']+[0-9]*)*+")){
+            JOptionPane.showMessageDialog(null,"El campo nombre es incorrecto, debe contenter al menos 1 numero");
             return false;
         }
 
-        if(!tipoReciclaje.matches("[0-9]*[-'][0-9]")){
-            JOptionPane.showMessageDialog(null,"Debe escribir números con guión y dígito verificador");
+        if(!tipoReciclaje.matches("[a-zA-Z]*")){
+            JOptionPane.showMessageDialog(null,"El campo Tipo de reciclaje sólo acepta letras");
             return false;
         }
 
-        if(!ciudad.matches("[0-9]*+")){
-            JOptionPane.showMessageDialog(null,"Deben ser sólo datos numéricos");
+        if(!ciudad.matches("[a-zA-Z]*")){
+            JOptionPane.showMessageDialog(null,"El campo ciudad sólo acepta letras");
             return false;
         }
 
-        if(!capacidad.matches("([a-zA-Z]*+[0-9]*)+")){
-            JOptionPane.showMessageDialog(null,"Debe recibir al menos una letra y un número");
+        if(!capacidad.matches("([0-9]*)")){
+            JOptionPane.showMessageDialog(null,"El campo capacidad debe ser numérico");
             return false;
         }
-        if(!periodoVaciado.matches("([a-zA-Z]*+[0-9]*)+")){
-            JOptionPane.showMessageDialog(null,"Debe recibir al menos una letra y un número");
+        if(!periodoVaciado.matches("([0-9]*)")){
+            JOptionPane.showMessageDialog(null,"El campo Periodo Vaciado debe ser numérico");
             return false;
         }
         return true;

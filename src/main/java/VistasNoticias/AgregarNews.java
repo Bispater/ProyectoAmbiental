@@ -4,6 +4,13 @@
  */
 package VistasNoticias;
 
+import Contenido.Noticias;
+import Contenido.PuntoReciclaje;
+import VistaMain.AdminFuncion;
+
+import javax.swing.*;
+import java.awt.*;
+
 /**
  *
  * @author Byron
@@ -27,19 +34,19 @@ public class AgregarNews extends javax.swing.JPanel {
     private void initComponents() {
 
         PanelAgregarNews = new javax.swing.JPanel();
-        FieldURL = new javax.swing.JLabel();
         FieldDescripcion = new javax.swing.JLabel();
         PanelTitulo = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         Borde = new javax.swing.JPanel();
-        FieldID = new javax.swing.JTextField();
-        FieldPassNew = new javax.swing.JTextField();
+        FieldURL = new javax.swing.JTextField();
+        FieldNumeroID = new javax.swing.JTextField();
         AgregarButton = new javax.swing.JButton();
         FieldTipoN = new javax.swing.JLabel();
-        FielPassActual = new javax.swing.JTextField();
+        FieldNoticia = new javax.swing.JTextField();
         FieldNID = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextDescripcion = new javax.swing.JTextArea();
+        FieldURLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(500, 377));
         setPreferredSize(new java.awt.Dimension(500, 377));
@@ -49,12 +56,12 @@ public class AgregarNews extends javax.swing.JPanel {
         PanelAgregarNews.setPreferredSize(new java.awt.Dimension(500, 377));
         PanelAgregarNews.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FieldURL.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        FieldURL.setForeground(new java.awt.Color(76, 168, 207));
-        FieldURL.setText("URL:");
-        FieldURL.setMaximumSize(new java.awt.Dimension(100, 40));
-        FieldURL.setPreferredSize(new java.awt.Dimension(100, 40));
-        PanelAgregarNews.add(FieldURL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        FieldURLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        FieldURLabel.setForeground(new java.awt.Color(76, 168, 207));
+        FieldURLabel.setText("URL:");
+        FieldURLabel.setMaximumSize(new java.awt.Dimension(100, 40));
+        FieldURLabel.setPreferredSize(new java.awt.Dimension(100, 40));
+        PanelAgregarNews.add(FieldURLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         FieldDescripcion.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         FieldDescripcion.setForeground(new java.awt.Color(76, 168, 207));
@@ -102,29 +109,29 @@ public class AgregarNews extends javax.swing.JPanel {
 
         PanelAgregarNews.add(Borde, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 510, 5));
 
-        FieldID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        FieldID.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        FieldID.setBorder(null);
-        FieldID.setMaximumSize(new java.awt.Dimension(140, 35));
-        FieldID.setPreferredSize(new java.awt.Dimension(140, 35));
-        FieldID.addActionListener(new java.awt.event.ActionListener() {
+        FieldURL.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        FieldURL.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        FieldURL.setBorder(null);
+        FieldURL.setMaximumSize(new java.awt.Dimension(140, 35));
+        FieldURL.setPreferredSize(new java.awt.Dimension(140, 35));
+        FieldURL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FieldIDActionPerformed(evt);
             }
         });
-        PanelAgregarNews.add(FieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 280, 30));
+        PanelAgregarNews.add(FieldURL, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 280, 30));
 
-        FieldPassNew.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        FieldPassNew.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        FieldPassNew.setBorder(null);
-        FieldPassNew.setMaximumSize(new java.awt.Dimension(140, 35));
-        FieldPassNew.setPreferredSize(new java.awt.Dimension(140, 35));
-        FieldPassNew.addActionListener(new java.awt.event.ActionListener() {
+        FieldNumeroID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        FieldNumeroID.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        FieldNumeroID.setBorder(null);
+        FieldNumeroID.setMaximumSize(new java.awt.Dimension(140, 35));
+        FieldNumeroID.setPreferredSize(new java.awt.Dimension(140, 35));
+        FieldNumeroID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FieldPassNewActionPerformed(evt);
             }
         });
-        PanelAgregarNews.add(FieldPassNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 170, 30));
+        PanelAgregarNews.add(FieldNumeroID, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 170, 30));
 
         AgregarButton.setBackground(new java.awt.Color(76, 168, 207));
         AgregarButton.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -146,17 +153,17 @@ public class AgregarNews extends javax.swing.JPanel {
         FieldTipoN.setPreferredSize(new java.awt.Dimension(100, 40));
         PanelAgregarNews.add(FieldTipoN, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 150, -1));
 
-        FielPassActual.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        FielPassActual.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        FielPassActual.setBorder(null);
-        FielPassActual.setMaximumSize(new java.awt.Dimension(140, 35));
-        FielPassActual.setPreferredSize(new java.awt.Dimension(140, 35));
-        FielPassActual.addActionListener(new java.awt.event.ActionListener() {
+        FieldNoticia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        FieldNoticia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        FieldNoticia.setBorder(null);
+        FieldNoticia.setMaximumSize(new java.awt.Dimension(140, 35));
+        FieldNoticia.setPreferredSize(new java.awt.Dimension(140, 35));
+        FieldNoticia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FielPassActualActionPerformed(evt);
             }
         });
-        PanelAgregarNews.add(FielPassActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 170, 30));
+        PanelAgregarNews.add(FieldNoticia, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 170, 30));
 
         FieldNID.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         FieldNID.setForeground(new java.awt.Color(76, 168, 207));
@@ -200,7 +207,48 @@ public class AgregarNews extends javax.swing.JPanel {
         VALIDAR QUE SE HAYAN INGRESADO BIEN LOS DATOS --> Funciones de la clase
         Mostrar showDialog
         */
+        //VALIDAR QUE SE HAYAN INGRESADO BIEN LOS DATOS --> Funciones de la clase
+        if (ValidarCampos()){
+            System.out.println("SE VALIDARON TODOS LOS CAMPOS");
+            String[] datosNuevaNoticia = new String[4];
+            datosNuevaNoticia[0] = FieldURL.getText();
+            datosNuevaNoticia[1] = FieldNoticia.getText();
+            datosNuevaNoticia[2] = FieldNumeroID.getText();
+            datosNuevaNoticia[3] = TextDescripcion.getText();
+            //SE INSTANCIA EL ARREGLO Y SE LLAMA AL MÉTODO QUE DEJA LOS DATOS EN CSV
+            Noticias nuevaNoticia = new Noticias();
+            if(nuevaNoticia.crearNuevaNoticia(datosNuevaNoticia)){
+                JOptionPane.showMessageDialog(null, "Se agregó la nueva noticia con éxito");
+                new AdminFuncion().setVisible(true);
+                JComponent comp = (JComponent) evt.getSource();
+                Window win = SwingUtilities.getWindowAncestor(comp);
+                win.dispose();
+            };
+        };
     }//GEN-LAST:event_AgregarButtonActionPerformed
+
+    private boolean ValidarCampos() {
+        //MODIFICAR RETROALIMENTACIÓN !!!!
+        String url = FieldURL.getText();
+        String tipoNoticia = FieldNoticia.getText();
+        String numeroID = FieldNumeroID.getText();
+        String descripcion = TextDescripcion.getText();
+
+        if((url.length()==0)||(tipoNoticia.length()==0)||(numeroID.length()==0)||descripcion.length()==0){
+            JOptionPane.showMessageDialog(null,"ERROR: Uno o más campos están vacíos.");
+            return false;
+        }
+        if(!tipoNoticia.matches("[a-zA-Z]*")){
+            System.out.println("tipo noticia : " + tipoNoticia);
+            JOptionPane.showMessageDialog(null,"El campo Tipo noticia sólo acepta letras");
+            return false;
+        }
+        if(!numeroID.matches("[0-9]*")){
+            JOptionPane.showMessageDialog(null,"El campo numero ID sólo acepta numeros");
+            return false;
+        }
+        return true;
+    }
 
     private void FielPassActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FielPassActualActionPerformed
         // TODO add your handling code here:
@@ -210,13 +258,13 @@ public class AgregarNews extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarButton;
     private javax.swing.JPanel Borde;
-    private javax.swing.JTextField FielPassActual;
+    private javax.swing.JTextField FieldNoticia;
     private javax.swing.JLabel FieldDescripcion;
-    private javax.swing.JTextField FieldID;
+    private javax.swing.JTextField FieldURL;
     private javax.swing.JLabel FieldNID;
-    private javax.swing.JTextField FieldPassNew;
+    private javax.swing.JTextField FieldNumeroID;
+    private javax.swing.JLabel FieldURLabel;
     private javax.swing.JLabel FieldTipoN;
-    private javax.swing.JLabel FieldURL;
     private javax.swing.JPanel PanelAgregarNews;
     private javax.swing.JPanel PanelTitulo;
     private javax.swing.JTextArea TextDescripcion;

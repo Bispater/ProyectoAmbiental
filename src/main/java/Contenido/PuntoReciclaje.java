@@ -239,7 +239,7 @@ public class PuntoReciclaje {
             FileWriter writer = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             PrintWriter printWriter = new PrintWriter(bufferedWriter);
-            printWriter.println(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3]);
+            printWriter.println(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3] + ";" + data[4] + ";" + data[5]);
             printWriter.flush();
             printWriter.close();
         } catch (Exception e) {

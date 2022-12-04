@@ -1,4 +1,8 @@
 package Contenido;
+import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -106,18 +110,19 @@ public class Noticias {
         }
     }
 
-    public boolean EliminarNoticia(){
-        int id;
-        System.out.println("===========================================");
-        System.out.print("Ingrese identificador de la noticia a eliminar:");
-        id = leer.nextInt();
-
-        for(int i=0; i<ListaNoticias.size(); i++){
-            if(ListaNoticias.get(i).getIdNoticia() == id){
-                ListaNoticias.remove(ListaNoticias.get(i));
-                return true;
-            }
+    public boolean crearNuevaNoticia(String[] data) {
+        String file = "src/main/resources/noticias/CSVnoticias.csv";
+        try {
+            FileWriter writer = new FileWriter(file, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            printWriter.println(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3]);
+            printWriter.flush();
+            printWriter.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
         }
-        return false;
+        return true;
     }
 }
