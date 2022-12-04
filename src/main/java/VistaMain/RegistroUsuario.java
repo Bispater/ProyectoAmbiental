@@ -4,6 +4,10 @@
  */
 package VistaMain;
 
+import Usuarios.Usuario;
+
+import javax.swing.*;
+
 public class RegistroUsuario extends javax.swing.JFrame {
 
     TiposUsuarios Regresar = new TiposUsuarios();
@@ -140,15 +144,15 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
         TextErrorUsuario.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         TextErrorUsuario.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorUsuario.setText("jLabel1");
+        //TextErrorUsuario.setText("jLabel1");
 
         TextErrorRut.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         TextErrorRut.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorRut.setText("jLabel2");
+        //TextErrorRut.setText("jLabel2");
 
         TextErrorPass.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         TextErrorPass.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorPass.setText("jLabel3");
+        //TextErrorPass.setText("jLabel3");
         TextErrorPass.setMaximumSize(new java.awt.Dimension(37, 22));
 
         TextPass1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -165,7 +169,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
         TextErrorCiudad.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         TextErrorCiudad.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorCiudad.setText("jLabel3");
+        //TextErrorCiudad.setText("jLabel3");
         TextErrorCiudad.setMaximumSize(new java.awt.Dimension(37, 22));
 
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
@@ -263,10 +267,53 @@ public class RegistroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_FieldRUTActionPerformed
 
     private void RegistrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarButtonActionPerformed
-        Regresar.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_RegistrarButtonActionPerformed
 
+        if(ValidarCampos()){
+            Usuario usuario = new Usuario();
+            UsuarioFuncion usuarioInterface = new UsuarioFuncion();
+            String [] dataCrearUsuario = new String[4];
+            dataCrearUsuario[0] = FieldName1.getText();
+            dataCrearUsuario[1] = FieldRUT.getText();
+            dataCrearUsuario[2] = FieldPass.getText();
+            dataCrearUsuario[3] = FieldCiudad.getText();
+            if(usuario.crearUsuario(dataCrearUsuario)){
+                JOptionPane.showMessageDialog(null, "¡Usuario creado con éxito!");
+                usuarioInterface.setVisible(true);
+                this.setVisible(false);
+            }
+        }
+
+
+    }
+
+    public boolean ValidarCampos(){
+        String nombreUsuario = FieldName1.getText();
+        String rut = FieldRUT.getText();
+        String contrasenia = FieldPass.getText();
+        String ciudad = FieldCiudad.getText();
+
+        if(nombreUsuario.length()==0||rut.length()==0||contrasenia.length()==0||ciudad.length()==0){
+            JOptionPane.showMessageDialog(null, "Uno o más campos están vacíos.");
+            return false;
+        }
+        if(!nombreUsuario.matches("([a-zA-Z]*)")){
+            JOptionPane.showMessageDialog(null, "El campo nombre está incorrecto");
+            return false;
+        }
+        if(!rut.matches("[0-9]*[-'][0-9]")){
+            JOptionPane.showMessageDialog(null, "Debe escribir números con guión y dígito verificador");
+            return false;
+        }
+        if(!contrasenia.matches("([a-zA-Z]*)")){
+            JOptionPane.showMessageDialog(null, "El campo contraseña está incorrecto");
+            return false;
+        }
+        if(!ciudad.matches("([a-zA-Z]*)")){
+            JOptionPane.showMessageDialog(null, "El campo ciudad solo acepta letras");
+            return false;
+        }
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Borde;

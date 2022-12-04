@@ -247,8 +247,8 @@ public class AgregarAdmin extends javax.swing.JPanel {
             return false;
         }
 
-        if(!contrasenia.matches("([a-zA-Z]*+[0-9]*)+")){
-            JOptionPane.showMessageDialog(null,"Debe recibir al menos una letra y un número");
+        if(!contrasenia.matches("([a-zA-Z]*)")){
+            JOptionPane.showMessageDialog(null,"El campo contraseña está incorrecto");
             return false;
         }
 
