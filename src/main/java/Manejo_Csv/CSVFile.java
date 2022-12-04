@@ -36,18 +36,6 @@ public class CSVFile {
             System.out.println(e);
         }
     }
-    public void escribirPuntoReciclajeCSV(String file, String[] header ){
-        try {
-            FileWriter writer = new FileWriter(file, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            PrintWriter printWriter = new PrintWriter(bufferedWriter);
-            printWriter.println(header[0] + ";" + header[1] + ";" + header[2] + ";" + header[3]+ ";" + header[4]+ ";" + header[5]);
-            printWriter.flush();
-            printWriter.close();
-        }catch (IOException e){
-            System.out.println(e);
-        }
-    }
     public void leerArchivo(String nombreArchivo) {
         try {
             lector = new BufferedReader(new FileReader(nombreArchivo));
