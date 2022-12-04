@@ -1,17 +1,9 @@
 package Usuarios;
 
-
-
-import java.util.Scanner;
-
-
-
 public abstract class  PersonaVirtual { //Clase padre - superClase
     private String Nombre;
 
     private String Rut;
-
-
 
     public String getNombre() {
         return Nombre;
@@ -28,14 +20,4 @@ public abstract class  PersonaVirtual { //Clase padre - superClase
     public void setRut(String rut) {
         this.Rut = rut;
     }
-
-
-
-
-
-
-
-
-
-
 }
