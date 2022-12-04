@@ -189,19 +189,19 @@ public class AgregarPR extends javax.swing.JPanel {
         PanelAgregarPR.add(AgregarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
 
         LabelErrorID.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorID.setText("jLabel1");
+        //LabelErrorID.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 170, 20));
 
         LabelErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorDireccion.setText("jLabel1");
+        //LabelErrorDireccion.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 86, 170, 20));
 
         LabelErrorTR.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorTR.setText("jLabel1");
+        //LabelErrorTR.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorTR, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 170, 20));
 
         LabelErrorCiudad.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorCiudad.setText("jLabel1");
+        //LabelErrorCiudad.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 170, 20));
 
         LabelCapacidad2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -253,7 +253,7 @@ public class AgregarPR extends javax.swing.JPanel {
         PanelAgregarPR.add(FieldIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, 30));
 
         LabelErrorCapacidad1.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorCapacidad1.setText("jLabel1");
+        //LabelErrorCapacidad1.setText("jLabel1");
         PanelAgregarPR.add(LabelErrorCapacidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 170, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
