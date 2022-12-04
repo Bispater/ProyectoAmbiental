@@ -4,6 +4,12 @@
  */
 package VistasPuntosR;
 
+import Usuarios.Admin;
+import VistaMain.AdminFuncion;
+
+import javax.swing.*;
+import java.awt.*;
+
 /**
  *
  * @author Byron
@@ -288,10 +294,75 @@ public class AgregarPR extends javax.swing.JPanel {
     }//GEN-LAST:event_FieldCiudadActionPerformed
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-        /*
-        VALIDAR QUE SE HAYAN INGRESADO BIEN LOS DATOS --> Funciones de la clase
-        */
+
+        //VALIDAR QUE SE HAYAN INGRESADO BIEN LOS DATOS --> Funciones de la clase
+        if (ValidarCampos()){
+            System.out.println("SE VALIDARON TODOS LOS CAMPOS");
+            //LOS NUEVOS DATOS DEL ADMIN SE DEJAN EN UN ARREGLO
+            String[] datosPuntoReciclaje = new String[6];
+            datosPuntoReciclaje[0] = FieldDireccion.getText();
+            datosPuntoReciclaje[1] = FieldTReciclaje.getText();
+            datosPuntoReciclaje[2] = FieldCiudad.getText();
+            datosPuntoReciclaje[3] = FieldCapacidad1.getText();
+            datosPuntoReciclaje[4] = FieldIdentificador.getText();
+            datosPuntoReciclaje[5] = FieldVaciado.getText();
+            //SE INSTANCIA EL ARREGLO Y SE LLAMA AL MÉTODO QUE DEJA LOS DATOS EN CSV
+            Admin nuevoAdmin = new Admin();
+            // SE LLAMA AL MÉTODO Y LE PASAMOS EL ARREGLO CON LOS DATOS DEL TEXFIELD
+            // SI NOS DEVUELVE TRUE ES QUE HEMOS ESCRITO EN EL CSV.
+            if(nuevoAdmin.crearPuntoReciclaje(datosPuntoReciclaje)){
+                JOptionPane.showMessageDialog(null, "Se agregó el nuevo punto de reciclaje con éxito");
+                new AdminFuncion().setVisible(true);
+                JComponent comp = (JComponent) evt.getSource();
+                Window win = SwingUtilities.getWindowAncestor(comp);
+                win.dispose();
+            };
+        };
+
+
+
     }//GEN-LAST:event_AgregarButtonActionPerformed
+
+    private boolean ValidarCampos() {
+        //MODIFICAR RETROALIMENTACIÓN !!!!
+        String direccion = FieldDireccion.getText();
+        String tipoReciclaje = FieldTReciclaje.getText();
+        String ciudad = FieldCiudad.getText();
+        String capacidad = FieldCapacidad1.getText();
+        String IDpunto = FieldIdentificador.getText();
+        String periodoVaciado = FieldVaciado.getText();
+
+        if((direccion.length()==0)||(tipoReciclaje.length()==0)||(ciudad.length()==0)||capacidad.length()==0||
+            (IDpunto.length()==0)||(periodoVaciado.length()==0)){
+            JOptionPane.showMessageDialog(null,"ERROR: Uno o más campos están vacíos.");
+            return false;
+        }
+        if(!direccion.matches("([a-zA-Z]*[ ']+[a-zA-Z]*)*+")){
+            JOptionPane.showMessageDialog(null,"El nombre ingresado es incorrecto");
+            return false;
+        }
+
+        if(!tipoReciclaje.matches("[0-9]*[-'][0-9]")){
+            JOptionPane.showMessageDialog(null,"Debe escribir números con guión y dígito verificador");
+            return false;
+        }
+
+        if(!ciudad.matches("[0-9]*+")){
+            JOptionPane.showMessageDialog(null,"Deben ser sólo datos numéricos");
+            return false;
+        }
+
+        if(!capacidad.matches("([a-zA-Z]*+[0-9]*)+")){
+            JOptionPane.showMessageDialog(null,"Debe recibir al menos una letra y un número");
+            return false;
+        }
+        if(!periodoVaciado.matches("([a-zA-Z]*+[0-9]*)+")){
+            JOptionPane.showMessageDialog(null,"Debe recibir al menos una letra y un número");
+            return false;
+        }
+        return true;
+    }
+
 
     private void FieldCapacidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCapacidad1ActionPerformed
         // TODO add your handling code here:

@@ -240,24 +240,32 @@ public class AgregarAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
 
-    public boolean validarCampos() {
+    private boolean validarCampos() {
         //MODIFICAR RETROALIMENTACIÓN !!!!
         String Nombre = FieldName4.getText();
+        String Rut = FieldRut.getText();
+        String Id = FieldID.getText();
+        String contrasenia = FieldPass.getText();
+
+        if((Nombre.length()==0)||(Rut.length()==0)||(Id.length()==0)||contrasenia.length()==0){
+            JOptionPane.showMessageDialog(null,"ERROR: Uno o más campos están vacíos.");
+            return false;
+        }
         if(!Nombre.matches("([a-zA-Z]*[ ']+[a-zA-Z]*)*+")){
             JOptionPane.showMessageDialog(null,"El nombre ingresado es incorrecto");
             return false;
         }
-        String Rut = FieldRut.getText();
+
         if(!Rut.matches("[0-9]*[-'][0-9]")){
             JOptionPane.showMessageDialog(null,"Debe escribir números con guión y dígito verificador");
             return false;
         }
-        String Id = FieldID.getText();
+
         if(!Id.matches("[0-9]*+")){
             JOptionPane.showMessageDialog(null,"Deben ser sólo datos numéricos");
             return false;
         }
-        String contrasenia = FieldPass.getText();
+
         if(!contrasenia.matches("([a-zA-Z]*+[0-9]*)+")){
             JOptionPane.showMessageDialog(null,"Debe recibir al menos una letra y un número");
             return false;

@@ -1,11 +1,9 @@
 package Programa_Principal;
-import Manejo_Csv.CSVFile;
-import Usuarios.Admin;
-import Usuarios.Usuario;
 import VistaMain.Principal;
-
-import java.io.FileReader;
+import Manejo_Csv.CSVFile;
 import java.util.Scanner;
+import Usuarios.*;
+import java.io.FileReader;
 
 public class Main {
     public static Scanner entrada;
@@ -13,12 +11,7 @@ public class Main {
     public static void main(String[] args){
         int opcion;
         int value = 0;
-        FileReader archCSV = null;
 
-
-        // LECTURA ARCHIVO
-        CSVFile archivo = new CSVFile();
-        archivo.leerArchivo("src/main/resources/CSVTEST.csv");
         entrada = new Scanner(System.in);
 
         do{
@@ -33,7 +26,6 @@ public class Main {
             System.out.println("============================");
             System.out.print("ESCOGA UNA OPCION: ");
             opcion=entrada.nextInt();
-            //Prueba
 
             Admin adminDefecto = new Admin(); //Admin por defecto para poder ingresar
 
@@ -50,7 +42,6 @@ public class Main {
                         return;
                     default:
                         throw new Exception("No se puede ejecutar esa opcion ");
-
                 }
             }catch(Exception e )
                 {

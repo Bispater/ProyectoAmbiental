@@ -9,6 +9,7 @@ import VistaMain.AdminFuncion;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 
 public class CambiarPassword extends javax.swing.JPanel {
 
@@ -155,19 +156,28 @@ public class CambiarPassword extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CambiarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarButtonActionPerformed
-         //VALIDAR QUE SE HAYAN INGRESADO BIEN LOS DATOS --> Funciones de la clase
+         //VALIDAR QUE SE HAYAN INGRESADO BIEN LOS DATOS --> método de esta clase
          if (ValidarCampos()){
-            System.out.println("SE VALIDARON TODOS LOS CAMPOS PARA CAMBIAR LA CONTRASEÑA");
-             if (comprobarAdmin(FieldID.getText(), FielPassActual.getText()) ) {
+             System.out.println("SE VALIDARON TODOS LOS CAMPOS PARA CAMBIAR LA CONTRASEÑA");
+             CSVFile admin = new CSVFile();
+             String identificador = FieldID.getText();
+             String contraseniaActual = FielPassActual.getText();
+             String contraseniaNueva = FieldPassNew.getText();
+             if (admin.comprobarAdminCSV("src/main/resources/administrador/CSVadmin.csv", identificador, contraseniaActual)) {
                  System.out.println("EL ADMINISTRADOR EXISTE!");
-                 CambiarContraseniaCSV(FieldID.getText(), FieldPassNew.getText());
-                 System.out.println("SE VALIDÓ EL ADMINISTRADOR PARA CAMBIAR LA CONTRASEÑA");
-                 JOptionPane.showMessageDialog(null, "Se cambió la contraseña con éxito");
-
-                 new AdminFuncion().setVisible(true);
-                 JComponent comp = (JComponent) evt.getSource();
-                 Window win = SwingUtilities.getWindowAncestor(comp);
-                 win.dispose();
+                 if(CambiarContraseniaCSV(identificador, contraseniaActual, contraseniaNueva)){
+                     JOptionPane.showMessageDialog(null, "Se cambió la contraseña con éxito");
+                     new AdminFuncion().setVisible(true);
+                     JComponent comp = (JComponent) evt.getSource();
+                     Window win = SwingUtilities.getWindowAncestor(comp);
+                     win.dispose();
+                 }else{
+                     JOptionPane.showMessageDialog(null, "ERROR: no fue posible cambiar la contrasena");
+                     new AdminFuncion().setVisible(true);
+                     JComponent comp = (JComponent) evt.getSource();
+                     Window win = SwingUtilities.getWindowAncestor(comp);
+                     win.dispose();
+                 }
              }
         }
     }//GEN-LAST:event_CambiarButtonActionPerformed
@@ -177,11 +187,14 @@ public class CambiarPassword extends javax.swing.JPanel {
         String contraseniaActual = FielPassActual.getText();
         String contraseniaNueva = FieldPassNew.getText();
 
+        if((identificador.length()==0)||(contraseniaActual.length()==0)||(contraseniaNueva.length()==0)){
+            JOptionPane.showMessageDialog(null,"ERROR: Uno o más campos están vacíos.");
+            return false;
+        }
         if(!identificador.matches("[0-9]*+")){
             JOptionPane.showMessageDialog(null,"ERROR: El campo Identificador permite sólo numeros");
             return false;
         }
-
         if(!contraseniaActual.matches("([a-zA-Z]*+[0-9]*)+")){
             JOptionPane.showMessageDialog(null,"ERROR: El campo contraseña Actual permite sólo letras y números");
             return false;
@@ -193,23 +206,33 @@ public class CambiarPassword extends javax.swing.JPanel {
         return true;
     }
 
-    public boolean comprobarAdmin(String identificador, String contraseniaActual) {
-        //buscar en csv que el id y la contraseña existan.
-        try {
-            CSVFile admin = new CSVFile();
-            if (admin.comprobarAdminCSV("src/main/resources/administrador/CSVadmin.csv", identificador, contraseniaActual)){
-                return true;
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            return false;
-        }
-        return false;
-    }
-
-    public void CambiarContraseniaCSV(String identificador, String nuevaContrasenia) {
+    public boolean CambiarContraseniaCSV(String identificador, String contraseniaActual, String nuevaContrasenia) {
         System.out.println("CAMBIANDO CONTRASEÑA...");
+        BufferedReader lector;
+        String linea;
+        String partes[] = null;
+        try {
+            FileWriter writer = new FileWriter("src/main/resources/administrador/CSVadmin.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            lector = new BufferedReader(new FileReader("src/main/resources/administrador/CSVadmin.csv"));
+            while ((linea = lector.readLine()) != null) {
+                String str = linea;
+                String[] partesDeLinea = str.split("[;]", 0);
+                if (partesDeLinea[2].equals(identificador) && partesDeLinea[3].equals(contraseniaActual)){
+                    //Cambiar contraseña
+                    printWriter.append(contraseniaActual);
+                    printWriter.flush();
+                    printWriter.close();
+                    return true;
+                }
+            }
+
+        }catch (IOException e){
+            System.out.println(e);
+        }
         //cambiar contraseña por id desde el CSV.
+        return false;
     }
 
     private void FieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldIDActionPerformed
