@@ -44,10 +44,6 @@ public class AgregarAdmin extends javax.swing.JPanel {
         FieldRut = new javax.swing.JTextField();
         FieldID = new javax.swing.JTextField();
         AgregarButton = new javax.swing.JButton();
-        LabelErrorPass = new javax.swing.JLabel();
-        LabelErrorN = new javax.swing.JLabel();
-        LabelErrorRut = new javax.swing.JLabel();
-        LabelErrorID = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(201, 234, 253));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -179,21 +175,6 @@ public class AgregarAdmin extends javax.swing.JPanel {
         });
         add(AgregarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
 
-        LabelErrorPass.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorPass.setText("jLabel1");
-        add(LabelErrorPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 170, 20));
-
-        LabelErrorN.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorN.setText("jLabel1");
-        add(LabelErrorN, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 86, 170, 20));
-
-        LabelErrorRut.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorRut.setText("jLabel1");
-        add(LabelErrorRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 170, 20));
-
-        LabelErrorID.setForeground(new java.awt.Color(255, 0, 0));
-        LabelErrorID.setText("jLabel1");
-        add(LabelErrorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 170, 20));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -282,10 +263,6 @@ public class AgregarAdmin extends javax.swing.JPanel {
     private javax.swing.JTextField FieldName4;
     private javax.swing.JTextField FieldPass;
     private javax.swing.JTextField FieldRut;
-    private javax.swing.JLabel LabelErrorID;
-    private javax.swing.JLabel LabelErrorN;
-    private javax.swing.JLabel LabelErrorPass;
-    private javax.swing.JLabel LabelErrorRut;
     private javax.swing.JPanel PanelTitulo;
     private javax.swing.JLabel TextID;
     private javax.swing.JLabel TextNombre;

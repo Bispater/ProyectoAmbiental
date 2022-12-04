@@ -319,9 +319,6 @@ public class AgregarPR extends javax.swing.JPanel {
                 win.dispose();
             };
         };
-
-
-
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private boolean ValidarCampos() {
@@ -332,33 +329,37 @@ public class AgregarPR extends javax.swing.JPanel {
         String capacidad = FieldCapacidad1.getText();
         String IDpunto = FieldIdentificador.getText();
         String periodoVaciado = FieldVaciado.getText();
-
+        System.out.println("===================== ");
+        System.out.println("tipo direccion : " + direccion);
+        System.out.println("tipo tipoReciclaje : " + tipoReciclaje);
+        System.out.println("tipo ciudad : " + ciudad);
+        System.out.println("===================== ");
         if((direccion.length()==0)||(tipoReciclaje.length()==0)||(ciudad.length()==0)||capacidad.length()==0||
             (IDpunto.length()==0)||(periodoVaciado.length()==0)){
             JOptionPane.showMessageDialog(null,"ERROR: Uno o más campos están vacíos.");
             return false;
         }
-        if(!direccion.matches("([a-zA-Z]*[ ']+[a-zA-Z]*)*+")){
-            JOptionPane.showMessageDialog(null,"El nombre ingresado es incorrecto");
+        if(!direccion.matches("([a-zA-Z]*[ ']+[a-zA-Z]*[ ']+[0-9]*)*+")){
+            JOptionPane.showMessageDialog(null,"El campo nombre es incorrecto, debe contenter al menos 1 numero");
             return false;
         }
 
-        if(!tipoReciclaje.matches("[0-9]*[-'][0-9]")){
-            JOptionPane.showMessageDialog(null,"Debe escribir números con guión y dígito verificador");
+        if(!tipoReciclaje.matches("[a-zA-Z]*")){
+            JOptionPane.showMessageDialog(null,"El campo Tipo de reciclaje sólo acepta letras");
             return false;
         }
 
-        if(!ciudad.matches("[0-9]*+")){
-            JOptionPane.showMessageDialog(null,"Deben ser sólo datos numéricos");
+        if(!ciudad.matches("[a-zA-Z]*")){
+            JOptionPane.showMessageDialog(null,"El campo ciudad sólo acepta letras");
             return false;
         }
 
-        if(!capacidad.matches("([a-zA-Z]*+[0-9]*)+")){
-            JOptionPane.showMessageDialog(null,"Debe recibir al menos una letra y un número");
+        if(!capacidad.matches("([0-9]*)")){
+            JOptionPane.showMessageDialog(null,"El campo capacidad debe ser numérico");
             return false;
         }
-        if(!periodoVaciado.matches("([a-zA-Z]*+[0-9]*)+")){
-            JOptionPane.showMessageDialog(null,"Debe recibir al menos una letra y un número");
+        if(!periodoVaciado.matches("([0-9]*)")){
+            JOptionPane.showMessageDialog(null,"El campo Periodo Vaciado debe ser numérico");
             return false;
         }
         return true;
