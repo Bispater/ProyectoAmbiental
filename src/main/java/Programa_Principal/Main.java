@@ -23,7 +23,6 @@ public class Main {
 
         do{
             //INICIA LA INTERFAZ CON LAS OPCIONES ANTES HECHAS POR CONSOLA.
-            
             Principal VistaPrincipal = new Principal();
             VistaPrincipal.setVisible(true);
             
@@ -39,11 +38,6 @@ public class Main {
             Admin adminDefecto = new Admin(); //Admin por defecto para poder ingresar
 
             Usuario usuarioDefecto = new Usuario();
-            //administradores.add(adm1);
-            //PuntoReciclaje pto1 = new PuntoReciclaje();
-            //pto1.CrearPuntoReciclaje();
-            //puntosReciclaje.add(pto1);
-            //-----------------
             try {
                 switch (opcion) {
                     case 1:
@@ -61,9 +55,7 @@ public class Main {
             }catch(Exception e )
                 {
                     e.printStackTrace();
-
                 }
-
         }while(true);
     }
 }
