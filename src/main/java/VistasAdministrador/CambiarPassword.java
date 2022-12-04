@@ -5,6 +5,7 @@
 package VistasAdministrador;
 
 import Manejo_Csv.CSVFile;
+import Usuarios.Admin;
 import VistaMain.AdminFuncion;
 
 import javax.swing.*;
@@ -159,7 +160,7 @@ public class CambiarPassword extends javax.swing.JPanel {
          //VALIDAR QUE SE HAYAN INGRESADO BIEN LOS DATOS --> método de esta clase
          if (ValidarCampos()){
              System.out.println("SE VALIDARON TODOS LOS CAMPOS PARA CAMBIAR LA CONTRASEÑA");
-             CSVFile admin = new CSVFile();
+             Admin admin = new Admin();
              String identificador = FieldID.getText();
              String contraseniaActual = FielPassActual.getText();
              String contraseniaNueva = FieldPassNew.getText();
@@ -178,6 +179,8 @@ public class CambiarPassword extends javax.swing.JPanel {
                      Window win = SwingUtilities.getWindowAncestor(comp);
                      win.dispose();
                  }
+             }else{
+                 JOptionPane.showMessageDialog(null, "ERROR: no fue posible encontrar al administrador");
              }
         }
     }//GEN-LAST:event_CambiarButtonActionPerformed
@@ -211,6 +214,7 @@ public class CambiarPassword extends javax.swing.JPanel {
         BufferedReader lector;
         String linea;
         String partes[] = null;
+
         try {
             FileWriter writer = new FileWriter("src/main/resources/administrador/CSVadmin.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
@@ -220,7 +224,11 @@ public class CambiarPassword extends javax.swing.JPanel {
                 String str = linea;
                 String[] partesDeLinea = str.split("[;]", 0);
                 if (partesDeLinea[2].equals(identificador) && partesDeLinea[3].equals(contraseniaActual)){
-                    //Cambiar contraseña
+
+                    printWriter.println("user Nuevo" + ";" + "0000-0" + ";" + identificador + ";" + nuevaContrasenia);
+                    printWriter.flush();
+                    printWriter.close();
+
                     printWriter.append(contraseniaActual);
                     printWriter.flush();
                     printWriter.close();
