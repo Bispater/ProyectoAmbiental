@@ -3,6 +3,8 @@ package Usuarios;
 import Contenido.Noticias;
 import Contenido.PuntoReciclaje;
 
+import javax.swing.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Usuario extends PersonaVirtual {
@@ -242,52 +244,40 @@ public class Usuario extends PersonaVirtual {
 
  }
 
-
     //Comportamientos y metodos
-
-    public void MenuUsuario() {
-        int opcion;
-
-        Usuario usuarioUtilidad = new Usuario();
-
-        //funcion que llena el arrayList con texto leido csv
-        PuntoReciclaje ptoReciclaje = new PuntoReciclaje();
-        int flag =0 ;
-        Noticias noticias = new Noticias();
-        while(flag!= 1 ) {
-            opcion=0 ;
-        System.out.println("1-Nuevo usuario");
-        System.out.println("2-Usuario existente");
-        System.out.println("0-Salir");
-        opcion = entrada.nextInt();
-
-            try {
-                switch (opcion) {
-                    case 1:
-                        usuarioUtilidad.CrearPersona(usuariosRegistrados);
-                        System.out.println("Usuario creado");
-                        break;
-                    case 2:
-                        if (usuarioUtilidad.ValidarPersona() ) {
-                            System.out.println("Usuario logeado correctamente");
-                            usuarioUtilidad.menuLogiado();
-
-                        }
-                        else System.out.println("Rut o contraseña incorrecta vuelva a intentar");
-                        break;
-
-                    case 0:
-                        flag = 1;
-                    default:
-                        throw new Exception("No se puede ejecutar esa opcion ");
-
+    public boolean validarUsuario(String rut, String contrasenia){
+        BufferedReader lector;
+        String linea;
+        String file = "src/main/resources/usuarios/CSVusuarios.csv";
+        try {
+            lector = new BufferedReader(new FileReader(file));
+            while ((linea = lector.readLine()) != null) {
+                String str = linea;
+                String[] partesDeLinea = str.split("[;]", 0);
+                if (partesDeLinea[1].equals(rut) && partesDeLinea[2].equals(contrasenia)){
+                    return true;
                 }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                return;
             }
+            lector.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
+        return false;
+    }
 
+    public boolean crearUsuario(String [] data) {
+        String file = "src/main/resources/usuarios/CSVusuarios.csv";
+        try {
+            FileWriter writer = new FileWriter(file, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            printWriter.println(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3]);
+            printWriter.flush();
+            printWriter.close();
+        }catch (IOException e){
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+        return true;
     }
 }

@@ -4,6 +4,10 @@
  */
 package VistaMain;
 
+import Usuarios.Usuario;
+
+import javax.swing.*;
+
 public class LoginUsuario extends javax.swing.JFrame {
 
     /**
@@ -116,11 +120,11 @@ public class LoginUsuario extends javax.swing.JFrame {
 
         TextErrorRut.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         TextErrorRut.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorRut.setText("jLabel2");
+        //TextErrorRut.setText("jLabel2");
 
         TextErrorPass.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         TextErrorPass.setForeground(new java.awt.Color(255, 0, 0));
-        TextErrorPass.setText("jLabel3");
+        //TextErrorPass.setText("jLabel3");
         TextErrorPass.setMaximumSize(new java.awt.Dimension(37, 22));
 
         TextPass1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -201,10 +205,37 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_FieldRUTActionPerformed
 
     private void IngresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarButtonActionPerformed
-        UsuarioFuncion usuario = new UsuarioFuncion();
-        usuario.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_IngresarButtonActionPerformed
+        if(ValidarCampos()){
+            Usuario usuario = new Usuario();
+            UsuarioFuncion usuarioInterface = new UsuarioFuncion();
+            String rut = FieldRUT.getText();
+            String contrasenia = FieldPass.getText();
+            if(usuario.validarUsuario(rut, contrasenia)){
+                usuarioInterface.setVisible(true);
+                this.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario ingresado no encontrado.");
+            }
+        }
+    }
+
+    public boolean ValidarCampos(){
+        String rut = FieldRUT.getText();
+        String contrasenia = FieldPass.getText();
+        if(rut.length()==0||contrasenia.length()==0){
+            JOptionPane.showMessageDialog(null, "Uno o más campos están vacíos.");
+            return false;
+        }
+        if(!rut.matches("[0-9]*[-'][0-9]")){
+            JOptionPane.showMessageDialog(null, "Debe escribir números con guión y dígito verificador");
+            return false;
+        }
+        if(!contrasenia.matches("([a-zA-Z]*)")){
+            JOptionPane.showMessageDialog(null, "El campo contraseña está incorrecto");
+            return false;
+        }
+        return true;
+    }
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
         TiposUsuarios Regresar = new TiposUsuarios();

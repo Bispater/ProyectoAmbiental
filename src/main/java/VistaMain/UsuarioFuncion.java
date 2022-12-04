@@ -4,6 +4,10 @@
  */
 package VistaMain;
 
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class UsuarioFuncion extends javax.swing.JFrame {
 
     /**
@@ -117,7 +121,6 @@ public class UsuarioFuncion extends javax.swing.JFrame {
         usuarios.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MenuItemSalirActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuBarUsuario;
