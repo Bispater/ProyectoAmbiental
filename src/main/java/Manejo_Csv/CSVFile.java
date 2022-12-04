@@ -75,24 +75,4 @@ public class CSVFile {
         }
     }
 
-    public boolean comprobarAdminCSV(String file, String identificador, String contraseniaActual) {
-
-        try {
-            lector = new BufferedReader(new FileReader(file));
-            while ((linea = lector.readLine()) != null) {
-                String str = linea;
-                String[] partesDeLinea = str.split("[;]", 0);
-                if (partesDeLinea[2].equals(identificador) && partesDeLinea[3].equals(contraseniaActual)){
-                    //Cambiar contraseña
-
-                    return true;
-                }
-            }
-            lector.close();
-            linea = null;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        return false;
-    }
 }

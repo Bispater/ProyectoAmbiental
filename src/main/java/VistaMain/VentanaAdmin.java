@@ -242,40 +242,35 @@ public class VentanaAdmin extends javax.swing.JFrame {
         //Condicion con funcion boleana para saber si se encuentran los registros ingresados
         Admin administrador = new Admin();
 
-        if(administrador.ValidarAdministrador(FieldID.getText(),FieldPass.getText())){
-            //--> abrir ventana de funcionalidades del administrador JFrame
-            AdminFuncion ventanaAdmin = new AdminFuncion();
-            ventanaAdmin.setVisible(true);
-            this.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "Uno o más datos son incorrectos");
-        }
-        /*if (ValidarCampos()){
+        if (ValidarCampos()){
             if(administrador.ValidarAdministrador(FieldID.getText(),FieldPass.getText())){
                 //--> abrir ventana de funcionalidades del administrador JFrame
                 AdminFuncion ventanaAdmin = new AdminFuncion();
                 ventanaAdmin.setVisible(true);
                 this.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "El administrador buscado no existe.");
             }
-        }*/
-
-
+        }
     }//GEN-LAST:event_IngresarButtonActionPerformed
 
     public boolean ValidarCampos() {
-        //MODIFICAR RETROALIMENTACIÓN !!!!
-        // ALERTAR CUANDO ESTÉN VACÍOS
         String Nombre = FieldName.getText();
+        String ID = FieldID.getText();
+        String pass = FieldPass.getText();
+        // ALERTAR CUANDO ESTÉN VACÍOS
+        if((Nombre.length()==0)||(ID.length()==0)||(pass.length()==0)){
+            JOptionPane.showMessageDialog(null,"ERROR: Uno o más campos están vacíos.");
+            return false;
+        }
         if(!Nombre.matches("([a-zA-Z]*[ ']+[a-zA-Z]*)*+")){
             JOptionPane.showMessageDialog(null,"El nombre ingresado es incorrecto");
             return false;
         }
-        String ID = FieldID.getText();
         if(!ID.matches("[0-9]*+")){
             JOptionPane.showMessageDialog(null,"El campo ID debe ser numérico.");
             return false;
         }
-        String pass = FieldPass.getText();
         if(!pass.matches( "([a-zA-Z]*+[0-9]*)+")){
             JOptionPane.showMessageDialog(null,"El campo contraseña está incorrecto");
             return false;

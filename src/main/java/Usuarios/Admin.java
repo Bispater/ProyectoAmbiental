@@ -1,12 +1,6 @@
 package Usuarios;
-import Contenido.Noticias;
-import Contenido.PuntoReciclaje;
-import Manejo_Csv.CSVFile;
-
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -89,14 +83,38 @@ public class Admin extends PersonaVirtual {
 
     //EL MÉTODO CREAR ADMIN INGRESA LOS DATOS EN EL CSV DE ADMINS.
     public boolean crearAdmin(String[] data) {
+        String file = "src/main/resources/administrador/CSVadmin.csv";
         try {
-            CSVFile admin = new CSVFile();
-            admin.escribirAdminCSV("src/main/resources/administrador/CSVadmin.csv", data);
-        } catch (Exception e) {
+            FileWriter writer = new FileWriter(file, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            printWriter.println(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3]);
+            printWriter.flush();
+            printWriter.close();
+        }catch (IOException e){
             JOptionPane.showMessageDialog(null, e);
             return false;
         }
         return true;
+    }
+
+    public boolean comprobarAdminCSV(String file, String identificador, String contraseniaActual) {
+        BufferedReader lector;
+        String linea;
+        try {
+            lector = new BufferedReader(new FileReader(file));
+            while ((linea = lector.readLine()) != null) {
+                String str = linea;
+                String[] partesDeLinea = str.split("[;]", 0);
+                if (partesDeLinea[2].equals(identificador) && partesDeLinea[3].equals(contraseniaActual)){
+                    return true;
+                }
+            }
+            lector.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return false;
     }
 
     public int contarPTosdereciclaje() {

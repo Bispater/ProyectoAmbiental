@@ -262,7 +262,7 @@ public class AgregarAdmin extends javax.swing.JPanel {
         }
 
         if(!Id.matches("[0-9]*+")){
-            JOptionPane.showMessageDialog(null,"Deben ser sólo datos numéricos");
+            JOptionPane.showMessageDialog(null,"Campo ID Debe tener sólo datos numéricos");
             return false;
         }
 
