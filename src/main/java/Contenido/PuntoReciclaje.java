@@ -1,4 +1,11 @@
 package Contenido;
+import Manejo_Csv.CSVFile;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+import javax.swing.*;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class PuntoReciclaje {
@@ -223,6 +230,22 @@ public class PuntoReciclaje {
 
     public boolean guardarPuntoReciclaje(PuntoReciclaje punto){
         puntosReciclaje.add(punto); //Se agrega el punto de reciclaje creado a la lista
+        return true;
+    }
+
+    public boolean crearPuntoReciclaje(String[] data) { //Los datos obtenidos los pasa al CSVpuntos
+        String file = "src/main/resources/puntos/CSVpuntos.csv";
+        try {
+            FileWriter writer = new FileWriter(file, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            printWriter.println(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3]);
+            printWriter.flush();
+            printWriter.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
         return true;
     }
 }

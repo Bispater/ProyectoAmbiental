@@ -99,17 +99,6 @@ public class Admin extends PersonaVirtual {
         return true;
     }
 
-    public boolean crearPuntoReciclaje(String[] data) {
-        try {
-            CSVFile admin = new CSVFile();
-            admin.escribirPuntoReciclajeCSV("src/main/resources/puntos/CSVpuntos.csv", data);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            return false;
-        }
-        return true;
-    }
-
     public int contarPTosdereciclaje() {
       int contadorMax=0;
       for(int i = 0 ; i < usuariosRegistrados.size() ; i++)
