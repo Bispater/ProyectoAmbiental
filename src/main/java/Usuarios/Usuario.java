@@ -9,20 +9,23 @@ public class Usuario extends PersonaVirtual {
     private String Ciudad;
     private String contrasenia ;
 
-
+    ArrayList<Usuario> usuariosRegistrados = new ArrayList<>();
+    ArrayList<PuntoReciclaje> ptosReciclajeDesuCiudad = new ArrayList<>() ;
 
     //El login de Usuarios sera mediante el rut y una contrasenia
     Scanner entrada = new Scanner(System.in);
     //Constructor
     public Usuario(){
-        super("","");
+        this.setNombre("");
+        this.setRut("");
         this.Ciudad="";
         this.contrasenia="" ;
     }
-    public Usuario(String nombre , String rut , String ciudad , String contrasenia ){
-        super(nombre,rut);
-        this.Ciudad=ciudad;
-        this.contrasenia=contrasenia ;
+    public Usuario( String ciudad , String contrasenia , String nombre , String rut){
+       this.setNombre(nombre);
+       this.setRut(rut);
+       this.Ciudad=ciudad;
+       this.contrasenia=contrasenia ;
     }
 
     //Getters & Setters
@@ -34,7 +37,7 @@ public class Usuario extends PersonaVirtual {
     }
 
 
-    public boolean ValidarPersona(ArrayList<Usuario> usuarios) {
+    public boolean ValidarPersona() {
         int contFail = 0;
         int flag = 0 ;
 
@@ -71,28 +74,28 @@ public class Usuario extends PersonaVirtual {
             System.out.print("Ingrese nuevamente la  contraseña: ");
             contra = entrada.nextLine();
         }
-        if( !Buscarenusurios(rut , contra , usuarios))
+        if( !Buscarenusurios(rut , contra ))
         {
             return false ;
         }
-        for(int i = 0 ; i < usuarios.size() ; i++) {
-                if(Buscarenusurios(usuarios.get(i).getRut() , usuarios.get(i).contrasenia , usuarios ))
+        for(int i = 0 ; i < usuariosRegistrados.size() ; i++) {
+                if(Buscarenusurios(usuariosRegistrados.get(i).getRut() , usuariosRegistrados.get(i).contrasenia  ))
                 {
-                  this.setNombre(usuarios.get(i).getNombre());
-                  this.setRut(usuarios.get(i).getRut());
-                  this.contrasenia = usuarios.get(i).contrasenia ;
-                  this.Ciudad = usuarios.get(i).Ciudad ;
+                  this.setNombre(usuariosRegistrados.get(i).getNombre());
+                  this.setRut(usuariosRegistrados.get(i).getRut());
+                  this.contrasenia = usuariosRegistrados.get(i).contrasenia ;
+                  this.Ciudad = usuariosRegistrados.get(i).Ciudad ;
                 }
         }
         return true ;
 
     }
 
-    public boolean Buscarenusurios(String rut , String contrasenia , ArrayList<Usuario> usuarios)
+    public boolean Buscarenusurios(String rut , String contrasenia )
     {
-        for(int i= 0 ; i< usuarios.size() ; i++)
+        for(int i= 0 ; i< usuariosRegistrados.size() ; i++)
         {
-            if( usuarios.get(i).getRut().equals(rut) && usuarios.get(i).contrasenia.equals(contrasenia) )
+            if( usuariosRegistrados.get(i).getRut().equals(rut) && usuariosRegistrados.get(i).contrasenia.equals(contrasenia) )
             {
 
                 return true ;
@@ -244,7 +247,7 @@ public class Usuario extends PersonaVirtual {
 
     public void MenuUsuario() {
         int opcion;
-        ArrayList<Usuario> usuariosRegistrados = new ArrayList<Usuario>();
+
         Usuario usuarioUtilidad = new Usuario();
 
         //funcion que llena el arrayList con texto leido csv
@@ -265,7 +268,7 @@ public class Usuario extends PersonaVirtual {
                         System.out.println("Usuario creado");
                         break;
                     case 2:
-                        if (usuarioUtilidad.ValidarPersona(usuariosRegistrados) ) {
+                        if (usuarioUtilidad.ValidarPersona() ) {
                             System.out.println("Usuario logeado correctamente");
                             usuarioUtilidad.menuLogiado();
 
