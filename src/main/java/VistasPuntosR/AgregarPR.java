@@ -308,19 +308,17 @@ public class AgregarPR extends javax.swing.JPanel {
             datosPuntoReciclaje[4] = FieldIdentificador.getText();
             datosPuntoReciclaje[5] = FieldVaciado.getText();
             //SE INSTANCIA EL ARREGLO Y SE LLAMA AL MÉTODO QUE DEJA LOS DATOS EN CSV
-            PuntoReciclaje nuevoPto = new PuntoReciclaje();
+            PuntoReciclaje  = new Admin();
             // SE LLAMA AL MÉTODO Y LE PASAMOS EL ARREGLO CON LOS DATOS DEL TEXFIELD
             // SI NOS DEVUELVE TRUE ES QUE HEMOS ESCRITO EN EL CSV.
-            if(nuevoPto.crearPuntoReciclaje(datosPuntoReciclaje)){
+            if(nuevoAdmin.crearPuntoReciclaje(datosPuntoReciclaje)){
                 JOptionPane.showMessageDialog(null, "Se agregó el nuevo punto de reciclaje con éxito");
                 new AdminFuncion().setVisible(true);
                 JComponent comp = (JComponent) evt.getSource();
                 Window win = SwingUtilities.getWindowAncestor(comp);
                 win.dispose();
-            };
-        };
-
-
+            }
+        }
 
     }//GEN-LAST:event_AgregarButtonActionPerformed
 

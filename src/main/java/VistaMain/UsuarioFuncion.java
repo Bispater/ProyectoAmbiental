@@ -118,7 +118,6 @@ public class UsuarioFuncion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_MenuItemSalirActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuBarUsuario;
     private javax.swing.JMenuItem MenuItemSalir;
