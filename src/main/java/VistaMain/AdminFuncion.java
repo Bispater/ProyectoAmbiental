@@ -209,7 +209,7 @@ public class AdminFuncion extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemEliminarNActionPerformed
 
     private void ItemAgregarPRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemAgregarPRActionPerformed
-        AgregarAdmin addPR = new AgregarAdmin();
+        AgregarPR addPR = new AgregarPR();
         MostrarPanel(addPR);
     }//GEN-LAST:event_ItemAgregarPRActionPerformed
 

@@ -19,15 +19,12 @@ public class Admin extends PersonaVirtual {
     ArrayList <Admin> administradores = new ArrayList<>();
     ArrayList<Usuario>usuariosRegistrados = new ArrayList<>();
 
-
-
     // Constructores
     public Admin() {
         this.setNombre("admin");
         this.setRut("00000000-0");
         this.id="";
         this.Contrasenia = "admin";
-
     }
     public Admin(String nombre , String run, String id , String contrasenia) {
         this.setNombre(nombre);
@@ -52,7 +49,6 @@ public class Admin extends PersonaVirtual {
         this.id = id;
     }
 
-
     public boolean ValidarAdministrador(String Id, String Password) {
         BufferedReader lector;
         String linea;
@@ -62,31 +58,23 @@ public class Admin extends PersonaVirtual {
                 String str = linea;
                 updateArrayListfromCSV(str); //PASAR DATOS DESDE EL CSV AL ARRAYLIST DE ADMINSITRADORES
             }
-            System.out.println("IMPRIMIR ARRAYLIST DE DATOS DESDE ARRAYLIST CREADO"); //Print y for despues de eliminan
-            for (int i = 0; i < administradores.size(); i++) {
+            lector.close();
+            System.out.println("MOSTRAR DATOS DEL ARRAYLIST CREADO");
+            for(int i=0;i<administradores.size();i++){
                 System.out.println("DATO N" + i + " " + administradores.get(i).getId());
                 System.out.println("DATO N" + i + " " + administradores.get(i).getContrasenia());
             }
-            lector.close();
-        } catch (Exception e) {
+
+        } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-        //Prueba
-        for(int i=0; i<administradores.size();i++){
-            if(administradores.get(i).getId().equals(Id) && administradores.get(i).getContrasenia().equals(Password)){
+
+        for (int i = 0; i < administradores.size(); i++) {
+            if (administradores.get(i).getId().equals(Id) && administradores.get(i).getContrasenia().equals(Password)) {
                 return true;
             }
         }
-        //JOptionPane.showMessageDialog(null, "No se encontró el administrador buscado.");
         return false;
-        /*
-        if(validarIdAdmin(datos[0]) && validarContraseniaAdmin(datos[1])){
-            System.out.println("¡INGRESO EXITOSO!");
-            return true;
-        }else{
-            JOptionPane.showMessageDialog(null, "No se encontró el administrador buscado.");
-        }
-        return false;*/
     }
 
     public void updateArrayListfromCSV (String linea){
@@ -97,28 +85,6 @@ public class Admin extends PersonaVirtual {
         String contraseniaAdmin = partesDeLinea[3];
         Admin nuevoAdmin = new Admin(nombreAdmin, runAdmin, idAdmin, contraseniaAdmin);
         administradores.add(nuevoAdmin);
-    }
-
-    public boolean validarIdAdmin(String id){
-        System.out.println("DATO DESDE FIELD ID: " + id);
-        for (int i=0; i<administradores.size();i++){
-            if(administradores.get(i).getId().equals(id)){
-                System.out.println("DATO ID DESDE ARRAYLIST ADMINISTRADORES: " + administradores.get(i).getId());
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean validarContraseniaAdmin(String contrasenia){
-        System.out.println("DATO DESDE FIELD CONTRASENIA: " + contrasenia);
-        for (int i=0; i<administradores.size();i++){
-            if(administradores.get(i).getContrasenia().equals(contrasenia)){
-                System.out.println("DATO CONTRASENIA DESDE ARRAYLIST ADMINISTRADORES: " + administradores.get(i).getContrasenia());
-                return true;
-            }
-        }
-        return false;
     }
 
     //EL MÉTODO CREAR ADMIN INGRESA LOS DATOS EN EL CSV DE ADMINS.
@@ -133,35 +99,25 @@ public class Admin extends PersonaVirtual {
         return true;
     }
 
-    public void PersonasMasptosDereciclaje( )
-    {
-    int maxPtosDereciclaje = contarPTosdereciclaje();
-    for(int i=0 ; i<usuariosRegistrados.size() ; i++)
-    {
-      if(usuariosRegistrados.get(i).ptosReciclajeDesuCiudad.size() == maxPtosDereciclaje )
-      {
-        System.out.println("El usuario: " + usuariosRegistrados.get(i).getNombre() + "Con rut");
-        System.out.println(usuariosRegistrados.get(i).getRut() );
-        System.out.println("Es una persona con el maximo puntos de reciclaje");
-
-      }
-
-
+    public boolean crearPuntoReciclaje(String[] data) {
+        try {
+            CSVFile admin = new CSVFile();
+            admin.escribirPuntoReciclajeCSV("src/main/resources/puntos/CSVpuntos.csv", data);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+        return true;
     }
 
-
-    }
-    public int contarPTosdereciclaje()
-    {
+    public int contarPTosdereciclaje() {
       int contadorMax=0;
       for(int i = 0 ; i < usuariosRegistrados.size() ; i++)
       {
           if(usuariosRegistrados.get(i).ptosReciclajeDesuCiudad.size() > contadorMax )
           {
               contadorMax=usuariosRegistrados.get(i).ptosReciclajeDesuCiudad.size();
-
           }
-
       }
         return contadorMax;
     }
