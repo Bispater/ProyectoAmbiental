@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args){
 
         //INICIA LA INTERFAZ CON LAS OPCIONES ANTES HECHAS POR CONSOLA.
+
         Principal VistaPrincipal = new Principal();
         VistaPrincipal.setVisible(true);
     }
