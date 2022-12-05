@@ -185,7 +185,8 @@ public class AdminFuncion extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemAgregarActionPerformed
 
     private void ItemMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemMostrarActionPerformed
-        // TODO add your handling code here:
+        MostrarPuntos mostrarPR = new MostrarPuntos();
+        MostrarPanel(mostrarPR);
     }//GEN-LAST:event_ItemMostrarActionPerformed
 
     private void ItemCambioPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCambioPassActionPerformed

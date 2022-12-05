@@ -282,8 +282,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 this.setVisible(false);
             }
         }
-
-
     }
 
     public boolean ValidarCampos(){
@@ -304,8 +302,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe escribir números con guión y dígito verificador");
             return false;
         }
-        if(!contrasenia.matches("([a-zA-Z]*)")){
-            JOptionPane.showMessageDialog(null, "El campo contraseña está incorrecto");
+        if(!contrasenia.matches("([a-zA-Z]*[0-9]*)")){
+            JOptionPane.showMessageDialog(null, "El campo contraseña sólo admite letras");
             return false;
         }
         if(!ciudad.matches("([a-zA-Z]*)")){
