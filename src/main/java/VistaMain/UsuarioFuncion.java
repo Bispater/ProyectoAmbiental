@@ -4,9 +4,12 @@
  */
 package VistaMain;
 
+import java.awt.BorderLayout;
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import VistasAdministrador.*;
+import VistasPuntosR.MostrarPuntos;
 
 public class UsuarioFuncion extends javax.swing.JFrame {
 
@@ -73,6 +76,11 @@ public class UsuarioFuncion extends javax.swing.JFrame {
         MenuUsuario.setText("Usuario");
 
         jMenuItem1.setText("Puntos Reciclaje cercanos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         MenuUsuario.add(jMenuItem1);
 
         jMenuItem2.setText("Consulta punto de reciclaje");
@@ -122,6 +130,21 @@ public class UsuarioFuncion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_MenuItemSalirActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        MostrarPuntos mostrarPtosR = new MostrarPuntos();
+        MostrarPanel(mostrarPtosR);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void MostrarPanel(JPanel p){
+        p.setSize(500,377);
+        p.setLocation(0,0);
+        
+        PanelContent.removeAll();
+        PanelContent.add(p, BorderLayout.CENTER);
+        PanelContent.revalidate();
+        PanelContent.repaint();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuBarUsuario;
     private javax.swing.JMenuItem MenuItemSalir;

@@ -35,8 +35,6 @@ public class LoginUsuario extends javax.swing.JFrame {
         TextRut = new javax.swing.JLabel();
         FieldPass = new javax.swing.JTextField();
         FieldRUT = new javax.swing.JTextField();
-        TextErrorRut = new javax.swing.JLabel();
-        TextErrorPass = new javax.swing.JLabel();
         TextPass1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,15 +116,6 @@ public class LoginUsuario extends javax.swing.JFrame {
             }
         });
 
-        TextErrorRut.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        TextErrorRut.setForeground(new java.awt.Color(255, 0, 0));
-        //TextErrorRut.setText("jLabel2");
-
-        TextErrorPass.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        TextErrorPass.setForeground(new java.awt.Color(255, 0, 0));
-        //TextErrorPass.setText("jLabel3");
-        TextErrorPass.setMaximumSize(new java.awt.Dimension(37, 22));
-
         TextPass1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         TextPass1.setForeground(new java.awt.Color(76, 168, 207));
         TextPass1.setText("Contraseña:");
@@ -146,12 +135,9 @@ public class LoginUsuario extends javax.swing.JFrame {
                     .addGroup(FondoLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(TextRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TextErrorPass, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(TextErrorRut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(TextRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TextPass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(118, 118, 118)
                         .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(FieldRUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(FieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -170,18 +156,14 @@ public class LoginUsuario extends javax.swing.JFrame {
                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FieldRUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextErrorRut, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FondoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(34, 34, 34)
                         .addComponent(FieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FondoLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(44, 44, 44)
                         .addComponent(TextPass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextErrorPass, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
+                .addGap(116, 116, 116)
                 .addComponent(IngresarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(70, Short.MAX_VALUE))
         );
@@ -204,7 +186,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldRUTActionPerformed
 
-    private void IngresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarButtonActionPerformed
+    private void IngresarButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
         if(ValidarCampos()){
             Usuario usuario = new Usuario();
             UsuarioFuncion usuarioInterface = new UsuarioFuncion();
@@ -251,8 +233,6 @@ public class LoginUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField FieldRUT;
     private javax.swing.JPanel Fondo;
     private javax.swing.JButton IngresarButton;
-    private javax.swing.JLabel TextErrorPass;
-    private javax.swing.JLabel TextErrorRut;
     private javax.swing.JLabel TextPass1;
     private javax.swing.JLabel TextRut;
     private javax.swing.JLabel TituloPrincipal;
