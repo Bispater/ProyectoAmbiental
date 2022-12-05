@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package VistasPuntosR;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.io.*;
 
 /**
  *
@@ -28,7 +31,6 @@ public class MostrarPuntos extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-
         setBackground(new java.awt.Color(102, 190, 230));
         setMaximumSize(new java.awt.Dimension(500, 377));
 
@@ -42,7 +44,7 @@ public class MostrarPuntos extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Direccion", "Tipo de reciclaje", "Ciudad", "Capacidad", "Identificador", "Vaciado en dias"
+                "Direccion", "Tipo de reciclaje", "Ciudad", "Capacidad", "ID", "Vaciado en dias"
             }
         ) {
             Class[] types = new Class [] {
@@ -53,6 +55,8 @@ public class MostrarPuntos extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+
+
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -65,8 +69,36 @@ public class MostrarPuntos extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
         );
+        nuevaTabla();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nuevaTabla() {
+        DefaultTableModel tabla = new DefaultTableModel();
+        tabla.addColumn( "Direccion");
+        tabla.addColumn( "Tipo de reciclaje");
+        tabla.addColumn("Ciudad");
+        tabla.addColumn("Capacidad");
+        tabla.addColumn("ID");
+        tabla.addColumn( "Vaciado en dias");
+        jTable1.setModel(tabla);
+
+        BufferedReader lector;
+        String linea;
+        try {
+            lector = new BufferedReader(new FileReader("src/main/resources/puntos/CSVpuntos.csv"));
+            while ((linea = lector.readLine()) != null) {
+                String str = linea;
+                String[] columns = str.split("[;]", 0);
+                tabla.addRow(columns);
+                System.out.println("SE AÑADIERON LOS DATOS");
+            }
+            jTable1.setModel(tabla);
+            lector.close();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

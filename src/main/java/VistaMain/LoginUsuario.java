@@ -205,6 +205,8 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_FieldRUTActionPerformed
 
     private void IngresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarButtonActionPerformed
+        //LOS CAMPOS VALIDAN EL FORMATO Y QUE SE HAYAN INGRESADO DATOS.
+
         if(ValidarCampos()){
             Usuario usuario = new Usuario();
             UsuarioFuncion usuarioInterface = new UsuarioFuncion();
